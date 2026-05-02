@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phạm Thanh Phúc | Material Quality Control Engineer</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #0f2942;
+      --accent: #1d6fa4;
+      --gold: #c9a84c;
+      --light: #f4f7fb;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(15,41,66,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: #fff; letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .nav-brand span { color: var(--gold); }
+    .nav-links { display: flex; gap: 0.25rem; }
+    .nav-links a {
+      color: rgba(255,255,255,0.78);
+      text-decoration: none; font-size: 0.82rem;
+      font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 0.4rem 0.75rem; border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--gold); background: rgba(201,168,76,0.12);
+    }
+    .nav-cv-btn {
+      background: var(--gold); color: var(--primary) !important;
+      font-weight: 700 !important; border-radius: 8px !important;
+      padding: 0.45rem 1.1rem !important;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .nav-cv-btn:hover { background: #e0bc6a !important; color: var(--primary) !important; }
+
+    /* hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: 0.3s; }
+    .mobile-menu {
+      display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 999;
+      background: var(--primary); padding: 1.5rem 2rem;
+      flex-direction: column; gap: 0.5rem;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: rgba(255,255,255,0.85); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500; padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f2942 0%, #1d3a5c 45%, #0e4a6e 100%);
+      display: flex; align-items: center;
+      padding: 80px 2rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 15% 50%, rgba(201,168,76,0.08) 0%, transparent 55%),
+        radial-gradient(circle at 85% 20%, rgba(29,111,164,0.18) 0%, transparent 45%);
+    }
+    .hero-grid {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+      align-items: center; position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.35);
+      color: var(--gold); font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1.5rem;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700; color: #fff;
+      line-height: 1.15; margin-bottom: 0.5rem;
+      white-space: nowrap;
+    }
+    .hero-title {
+      font-size: 1.05rem; color: var(--gold);
+      font-weight: 600; margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+    .hero-desc {
+      color: rgba(255,255,255,0.72); font-size: 0.95rem;
+      line-height: 1.8; margin-bottom: 2rem;
+    }
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-bottom: 2.5rem;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-size: 2rem; font-weight: 800; color: var(--gold);
+      font-family: 'Playfair Display', serif; display: block;
+    }
+    .stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--gold); color: var(--primary);
+      font-weight: 700; font-size: 0.9rem;
+      padding: 0.85rem 1.8rem; border-radius: 10px;
+      text-decoration: none; transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.35);
+    }
+    .btn-primary:hover { background: #e0bc6a; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,168,76,0.45); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1.5px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85);
+      font-weight: 600; font-size: 0.9rem;
+      padding: 0.85rem 1.8rem; border-radius: 10px;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    /* Hero right card */
+    .hero-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px; padding: 2.5rem;
+      backdrop-filter: blur(10px);
+    }
+    .avatar-ring {
+      width: 110px; height: 110px;
+      border-radius: 50%; margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, var(--gold), #e0bc6a);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--primary); font-family: 'Playfair Display', serif;
+      box-shadow: 0 0 0 4px rgba(201,168,76,0.2), 0 0 0 8px rgba(201,168,76,0.08);
+    }
+    .info-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: #fff; font-weight: 700;
+      text-align: center; margin-bottom: 0.3rem; white-space: nowrap;
+    }
+    .info-card-title { text-align: center; color: var(--gold); font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem; }
+    .info-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .info-list li {
+      display: flex; align-items: center; gap: 0.75rem;
+      color: rgba(255,255,255,0.8); font-size: 0.85rem;
+    }
+    .info-list li i { color: var(--gold); width: 16px; flex-shrink: 0; }
+    .divider-gold { height: 1px; background: rgba(201,168,76,0.25); margin: 1.2rem 0; }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--accent); font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem;
+    }
+    .section-label::before {
+      content: ''; width: 28px; height: 2px; background: var(--gold); border-radius: 2px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700; color: var(--primary);
+      margin-bottom: 0.75rem; line-height: 1.2;
+    }
+    .section-sub { color: var(--muted); font-size: 0.95rem; max-width: 560px; }
+
+    /* ── ABOUT ── */
+    #about { background: #fff; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+    .about-text p { color: var(--muted); line-height: 1.85; margin-bottom: 1.1rem; font-size: 0.94rem; }
+    .about-text p strong { color: var(--primary); font-weight: 600; }
+    .approach-box {
+      background: var(--light); border-left: 3px solid var(--gold);
+      border-radius: 0 12px 12px 0; padding: 1.4rem 1.6rem; margin-top: 1.5rem;
+    }
+    .approach-box h4 { font-size: 0.85rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.8rem; }
+    .approach-item { display: flex; align-items: flex-start; gap: 0.7rem; margin-bottom: 0.55rem; }
+    .approach-item i { color: var(--gold); margin-top: 3px; font-size: 0.8rem; flex-shrink: 0; }
+    .approach-item span { color: var(--muted); font-size: 0.88rem; }
+    .value-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .value-card {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.3rem 1.5rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+      transition: all 0.3s; cursor: default;
+    }
+    .value-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(201,168,76,0.12); transform: translateX(4px); }
+    .value-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1rem; flex-shrink: 0;
+    }
+    .value-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem; }
+    .value-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--light); }
+    .timeline { position: relative; margin-top: 3rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 20px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--gold), var(--accent));
+    }
+    .timeline-item { position: relative; padding-left: 60px; margin-bottom: 2.5rem; }
+    .timeline-dot {
+      position: absolute; left: 10px; top: 6px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--gold); border: 3px solid #fff;
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.25);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .timeline-dot i { font-size: 0.55rem; color: var(--primary); }
+    .exp-card {
+      background: #fff; border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 1.8rem 2rem;
+      transition: all 0.3s;
+    }
+    .exp-card:hover { box-shadow: 0 8px 32px rgba(15,41,66,0.1); border-color: rgba(201,168,76,0.4); transform: translateY(-2px); }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.5rem; }
+    .exp-role { font-size: 1.05rem; font-weight: 700; color: var(--primary); }
+    .exp-company { font-size: 0.88rem; color: var(--accent); font-weight: 600; margin-bottom: 0.3rem; }
+    .exp-badge {
+      background: rgba(15,41,66,0.07); color: var(--primary);
+      font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.8rem;
+      border-radius: 50px; white-space: nowrap;
+    }
+    .exp-badge.current { background: rgba(22,163,74,0.1); color: #16a34a; }
+    .exp-divider { height: 1px; background: var(--border); margin: 1rem 0; }
+    .exp-list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1rem; }
+    .exp-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.86rem; color: var(--muted); }
+    .exp-list li::before { content: '▸'; color: var(--accent); flex-shrink: 0; margin-top: 1px; }
+    .achievement-box {
+      background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(29,111,164,0.06));
+      border: 1px solid rgba(201,168,76,0.25); border-radius: 10px; padding: 1rem 1.2rem;
+    }
+    .achievement-box h5 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 0.6rem; }
+    .ach-item { display: flex; align-items: flex-start; gap: 0.55rem; font-size: 0.84rem; color: var(--muted); margin-bottom: 0.35rem; }
+    .ach-item i { color: var(--gold); font-size: 0.7rem; margin-top: 3px; flex-shrink: 0; }
+
+    /* ── SKILLS ── */
+    #skills { background: #fff; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .skill-card {
+      background: var(--light); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.5rem;
+      transition: all 0.3s;
+    }
+    .skill-card:hover { background: #fff; box-shadow: 0 6px 24px rgba(15,41,66,0.1); border-color: rgba(201,168,76,0.4); transform: translateY(-3px); }
+    .skill-icon {
+      width: 48px; height: 48px; border-radius: 14px; margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.2rem;
+    }
+    .skill-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem; }
+    .skill-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+    .skill-tag {
+      display: inline-block; background: rgba(15,41,66,0.07);
+      color: var(--primary); font-size: 0.72rem; font-weight: 600;
+      padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem 0.15rem 0 0;
+    }
+
+    /* ── PROJECT ── */
+    #project { background: var(--light); }
+    .project-card {
+      background: #fff; border-radius: 20px;
+      border: 1px solid var(--border);
+      overflow: hidden; margin-top: 3rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .project-visual {
+      background: linear-gradient(135deg, var(--primary) 0%, #1d3a5c 50%, #0e4a6e 100%);
+      padding: 3rem; display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start; gap: 1.5rem;
+    }
+    .project-icon-big {
+      width: 80px; height: 80px; border-radius: 20px;
+      background: rgba(201,168,76,0.2); border: 2px solid rgba(201,168,76,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; color: var(--gold);
+    }
+    .project-visual h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #fff; line-height: 1.3; }
+    .project-visual p { color: rgba(255,255,255,0.65); font-size: 0.88rem; line-height: 1.7; }
+    .result-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(201,168,76,0.2); border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold); font-size: 0.78rem; font-weight: 700;
+      padding: 0.35rem 0.9rem; border-radius: 50px;
+    }
+    .project-details { padding: 3rem; }
+    .project-details h4 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem; }
+    .metric-row { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+    .metric-box {
+      flex: 1; background: var(--light); border-radius: 12px; padding: 1rem;
+      text-align: center; border: 1px solid var(--border);
+    }
+    .metric-box .num { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--gold); display: block; }
+    .metric-box .lbl { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
+    .detail-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .detail-item i { color: var(--gold); font-size: 0.85rem; margin-top: 3px; flex-shrink: 0; }
+    .detail-item span { font-size: 0.87rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── THINKING ── */
+    #thinking { background: var(--primary); }
+    .thinking-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+    .thinking-inner .section-label { justify-content: center; color: var(--gold); }
+    .thinking-inner .section-label::before { background: rgba(201,168,76,0.5); }
+    .thinking-inner .section-title { color: #fff; margin-bottom: 1.5rem; }
+    .thinking-quote {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 16px; padding: 2rem 2.5rem; margin: 2rem 0;
+      position: relative;
+    }
+    .thinking-quote::before {
+      content: '"';
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem; color: rgba(201,168,76,0.2);
+      position: absolute; top: -1rem; left: 1.5rem; line-height: 1;
+    }
+    .thinking-quote p {
+      color: rgba(255,255,255,0.85); font-size: 1rem; line-height: 1.85;
+      font-style: italic; position: relative; z-index: 1;
+    }
+    .arrow-point {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 12px; padding: 1.2rem 1.5rem;
+      text-align: left;
+    }
+    .arrow-point i { color: var(--gold); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
+    .arrow-point span { color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.7; }
+    .thinking-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
+    .thinking-pill {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 1.2rem;
+      transition: all 0.3s;
+    }
+    .thinking-pill:hover { border-color: rgba(201,168,76,0.4); background: rgba(201,168,76,0.07); }
+    .thinking-pill i { color: var(--gold); font-size: 1.3rem; margin-bottom: 0.7rem; display: block; }
+    .thinking-pill h4 { color: #fff; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .thinking-pill p { color: rgba(255,255,255,0.55); font-size: 0.78rem; line-height: 1.55; }
+
+    /* ── EDUCATION ── */
+    #education { background: #fff; }
+    .edu-card {
+      background: linear-gradient(135deg, var(--primary) 0%, #1d3a5c 100%);
+      border-radius: 20px; padding: 2.5rem;
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 2rem; align-items: start; margin-top: 3rem;
+      max-width: 700px;
+    }
+    .edu-icon {
+      width: 70px; height: 70px; border-radius: 18px;
+      background: rgba(201,168,76,0.2); border: 2px solid rgba(201,168,76,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; color: var(--gold); flex-shrink: 0;
+    }
+    .edu-info h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #fff; font-weight: 700; margin-bottom: 0.3rem; }
+    .edu-info .major { color: var(--gold); font-weight: 600; font-size: 0.92rem; margin-bottom: 0.2rem; }
+    .edu-info .period { color: rgba(255,255,255,0.55); font-size: 0.82rem; margin-bottom: 1rem; }
+    .gpa-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(201,168,76,0.2); border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold); font-weight: 700; font-size: 0.9rem;
+      padding: 0.4rem 1rem; border-radius: 8px;
+    }
+    .dev-section { margin-top: 3rem; padding: 2rem; background: var(--light); border-radius: 16px; border: 1px solid var(--border); max-width: 700px; }
+    .dev-section h4 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem; }
+    .dev-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .dev-list li { display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.88rem; color: var(--muted); }
+    .dev-list li i { color: var(--gold); font-size: 0.8rem; margin-top: 3px; flex-shrink: 0; }
+
+    /* ── CV SECTION ── */
+    #cv { background: var(--light); }
+    .cv-wrapper {
+      margin-top: 3rem;
+      background: #fff; border-radius: 20px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(15,41,66,0.08);
+    }
+    .cv-header-bar {
+      background: linear-gradient(135deg, var(--primary), #1d3a5c);
+      padding: 2rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .cv-header-bar h3 { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.2rem; }
+    .cv-header-bar p { color: rgba(255,255,255,0.6); font-size: 0.82rem; margin-top: 0.2rem; }
+    .cv-dl-btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--gold); color: var(--primary);
+      font-weight: 700; font-size: 0.9rem;
+      padding: 0.75rem 1.6rem; border-radius: 10px;
+      text-decoration: none; cursor: pointer; border: none;
+      transition: all 0.3s; box-shadow: 0 4px 14px rgba(201,168,76,0.4);
+    }
+    .cv-dl-btn:hover { background: #e0bc6a; transform: translateY(-2px); }
+
+    /* CV Preview */
+    .cv-preview-area { padding: 2.5rem; background: #f8f9fb; }
+    .cv-preview-label {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.5rem;
+    }
+    .cv-preview-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* ─── ACTUAL CV DOCUMENT ─── */
+    .cv-doc {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 40px rgba(15,41,66,0.12);
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+      max-width: 860px; margin: 0 auto;
+    }
+    /* CV Top Bar */
+    .cv-doc-header {
+      background: linear-gradient(135deg, #0f2942 0%, #1d3a5c 100%);
+      padding: 2.2rem 2.5rem;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 2rem; align-items: center;
+    }
+    .cv-doc-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem; font-weight: 700; color: #fff;
+      letter-spacing: 0.01em; white-space: nowrap;
+    }
+    .cv-doc-position {
+      color: var(--gold); font-size: 0.9rem; font-weight: 600; margin-top: 0.3rem;
+    }
+    .cv-doc-contacts {
+      display: flex; flex-direction: column; gap: 0.4rem; align-items: flex-end;
+    }
+    .cv-contact-item {
+      display: flex; align-items: center; gap: 0.5rem;
+      color: rgba(255,255,255,0.8); font-size: 0.78rem;
+    }
+    .cv-contact-item i { color: var(--gold); width: 14px; }
+    /* CV Gold stripe */
+    .cv-stripe { height: 4px; background: linear-gradient(90deg, var(--gold), #e0bc6a, var(--gold)); }
+    /* CV Body */
+    .cv-body { display: grid; grid-template-columns: 200px 1fr; }
+    .cv-sidebar {
+      background: #f4f7fb; padding: 1.8rem 1.5rem;
+      border-right: 1px solid var(--border);
+    }
+    .cv-main { padding: 1.8rem 2rem; }
+    .cv-section-title {
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 0.3rem; margin-bottom: 0.9rem;
+    }
+    /* Sidebar items */
+    .cv-sidebar-section { margin-bottom: 1.6rem; }
+    .cv-info-item { margin-bottom: 0.55rem; }
+    .cv-info-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+    .cv-info-val { font-size: 0.78rem; color: var(--text); margin-top: 0.05rem; line-height: 1.45; }
+    .cv-skill-tag {
+      display: inline-block; background: rgba(15,41,66,0.08);
+      color: var(--primary); font-size: 0.7rem; font-weight: 500;
+      padding: 0.2rem 0.55rem; border-radius: 4px;
+      margin: 0.15rem 0.1rem 0 0; border: 1px solid rgba(15,41,66,0.12);
+    }
+    /* Main sections */
+    .cv-main-section { margin-bottom: 1.5rem; }
+    .cv-summary {
+      font-size: 0.8rem; color: var(--muted); line-height: 1.75;
+      background: rgba(15,41,66,0.03); border-left: 3px solid var(--gold);
+      padding: 0.9rem 1rem; border-radius: 0 8px 8px 0;
+    }
+    .cv-exp-item { margin-bottom: 1.1rem; }
+    .cv-exp-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.15rem; }
+    .cv-exp-role { font-size: 0.85rem; font-weight: 700; color: var(--primary); }
+    .cv-exp-date { font-size: 0.7rem; color: var(--muted); font-weight: 500; white-space: nowrap; }
+    .cv-exp-company { font-size: 0.75rem; color: var(--accent); font-weight: 600; margin-bottom: 0.45rem; }
+    .cv-exp-bullets { list-style: none; padding: 0; }
+    .cv-exp-bullets li {
+      font-size: 0.76rem; color: var(--muted);
+      padding-left: 1rem; position: relative; margin-bottom: 0.2rem; line-height: 1.55;
+    }
+    .cv-exp-bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); }
+    .cv-ach-highlight {
+      background: linear-gradient(135deg, rgba(201,168,76,0.07), rgba(29,111,164,0.07));
+      border: 1px solid rgba(201,168,76,0.2); border-radius: 6px;
+      padding: 0.5rem 0.75rem; margin-top: 0.4rem;
+    }
+    .cv-ach-highlight p { font-size: 0.72rem; color: var(--muted); line-height: 1.55; }
+    .cv-ach-highlight p i { color: var(--gold); margin-right: 4px; }
+    .cv-project-box {
+      background: linear-gradient(135deg, rgba(15,41,66,0.04), rgba(29,111,164,0.04));
+      border: 1px solid rgba(15,41,66,0.1); border-radius: 8px;
+      padding: 0.9rem 1rem;
+    }
+    .cv-project-box h5 { font-size: 0.8rem; font-weight: 700; color: var(--primary); margin-bottom: 0.3rem; }
+    .cv-project-box p { font-size: 0.75rem; color: var(--muted); line-height: 1.6; }
+    .cv-metrics { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
+    .cv-metric {
+      flex: 1; background: #fff; border: 1px solid var(--border);
+      border-radius: 6px; padding: 0.5rem; text-align: center;
+    }
+    .cv-metric .cv-m-num { font-size: 1rem; font-weight: 800; color: var(--gold); font-family: 'Playfair Display', serif; }
+    .cv-metric .cv-m-lbl { font-size: 0.62rem; color: var(--muted); margin-top: 0.1rem; }
+    .cv-separator { height: 1px; background: var(--border); margin: 0.9rem 0; }
+    .cv-edu-item { display: flex; justify-content: space-between; align-items: flex-start; }
+    .cv-edu-uni { font-size: 0.82rem; font-weight: 700; color: var(--primary); }
+    .cv-edu-major { font-size: 0.76rem; color: var(--muted); margin-top: 0.15rem; }
+    .cv-gpa {
+      background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+      color: #92710e; font-size: 0.72rem; font-weight: 700;
+      padding: 0.25rem 0.6rem; border-radius: 5px; white-space: nowrap;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: #fff; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; align-items: start; }
+    .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--primary); margin-bottom: 0.75rem; }
+    .contact-info p { color: var(--muted); font-size: 0.93rem; line-height: 1.8; margin-bottom: 1.5rem; }
+    .contact-item-row {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.85rem 1rem; background: var(--light);
+      border-radius: 12px; margin-bottom: 0.75rem;
+      border: 1px solid var(--border); transition: all 0.3s;
+    }
+    .contact-item-row:hover { border-color: var(--gold); transform: translateX(4px); }
+    .ci-icon {
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 0.9rem;
+    }
+    .ci-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .ci-val { font-size: 0.9rem; color: var(--primary); font-weight: 600; }
+    .contact-cta {
+      background: linear-gradient(135deg, var(--primary), #1d3a5c);
+      border-radius: 20px; padding: 2.5rem;
+      display: flex; flex-direction: column; gap: 1.2rem;
+    }
+    .contact-cta h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; }
+    .contact-cta p { color: rgba(255,255,255,0.65); font-size: 0.88rem; line-height: 1.75; }
+    .cta-actions { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem; }
+    .cta-btn {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; text-decoration: none;
+      padding: 0.9rem 1.2rem; border-radius: 12px;
+      font-size: 0.88rem; font-weight: 500;
+      transition: all 0.3s; cursor: pointer;
+    }
+    .cta-btn:hover { background: rgba(201,168,76,0.15); border-color: rgba(201,168,76,0.4); }
+    .cta-btn i { color: var(--gold); width: 18px; }
+    .cta-btn.primary-cta {
+      background: var(--gold); color: var(--primary); font-weight: 700;
+      border-color: var(--gold);
+    }
+    .cta-btn.primary-cta:hover { background: #e0bc6a; }
+    .cta-btn.primary-cta i { color: var(--primary); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--primary);
+      padding: 2rem;
+      text-align: center;
+    }
+    footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
+    footer span { color: var(--gold); }
+
+    /* ── BACK TO TOP ── */
+    #topBtn {
+      position: fixed; bottom: 2rem; right: 2rem;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--gold); color: var(--primary);
+      border: none; cursor: pointer; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(201,168,76,0.4);
+      opacity: 0; pointer-events: none; transition: all 0.3s;
+      z-index: 900;
+    }
+    #topBtn.show { opacity: 1; pointer-events: all; }
+    #topBtn:hover { background: #e0bc6a; transform: translateY(-3px); }
+
+    /* ── ANIMATIONS ── */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-left { opacity: 0; transform: translateX(-24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in-left.visible { opacity: 1; transform: translateX(0); }
+    .fade-in-right { opacity: 0; transform: translateX(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ── PRINT / PDF (hide nav, footer links) ── */
+    @media print {
+      nav, footer, #topBtn, .cv-preview-area .cv-preview-label,
+      .cv-header-bar, .hero, #about, #experience, #skills, #project, #thinking, #education, #contact { display: none !important; }
+      .cv-doc { box-shadow: none !important; border: none !important; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-card { max-width: 460px; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-card { grid-template-columns: 1fr; }
+      .thinking-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .cv-body { grid-template-columns: 1fr; }
+      .cv-sidebar { border-right: none; border-bottom: 1px solid var(--border); }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-name { white-space: normal; }
+      .info-card-name { white-space: normal; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 3.5rem 1.2rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .thinking-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+      .metric-row { flex-direction: column; }
+      .cv-doc-header { grid-template-columns: 1fr; }
+      .cv-doc-contacts { align-items: flex-start; }
+      .hero-name { white-space: normal; font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVIGATION ══ -->
+<nav>
+  <div class="nav-brand"><span>P</span>hạm Thanh Phúc</div>
+  <div class="nav-links">
+    <a href="#about">Giới thiệu</a>
+    <a href="#experience">Kinh nghiệm</a>
+    <a href="#skills">Kỹ năng</a>
+    <a href="#project">Dự án</a>
+    <a href="#education">Học vấn</a>
+    <a href="#contact">Liên hệ</a>
+    <a href="#cv" class="nav-cv-btn"><i class="fas fa-file-arrow-down"></i> Tải CV</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">Giới thiệu</a>
+  <a href="#experience" onclick="closeMenu()">Kinh nghiệm</a>
+  <a href="#skills" onclick="closeMenu()">Kỹ năng</a>
+  <a href="#project" onclick="closeMenu()">Dự án</a>
+  <a href="#education" onclick="closeMenu()">Học vấn</a>
+  <a href="#contact" onclick="closeMenu()">Liên hệ</a>
+  <a href="#cv" onclick="closeMenu()"><i class="fas fa-file-arrow-down" style="color:var(--gold)"></i> Tải CV</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <!-- Left -->
+    <div>
+      <div class="hero-badge"><i class="fas fa-circle" style="font-size:0.5rem"></i> Đang làm việc tại Thép Tây Đô</div>
+      <h1 class="hero-name">Phạm Thanh Phúc</h1>
+      <div class="hero-title">Kỹ sư Kỹ thuật Vật liệu &nbsp;|&nbsp; Material Quality Control</div>
+      <p class="hero-desc">Chuyên gia kiểm soát chất lượng vật liệu với <strong style="color:#fff">5 năm kinh nghiệm</strong> trong môi trường sản xuất công nghiệp. Tôi kết hợp quan sát thực địa, phân tích dữ liệu và tư duy hệ thống để đưa ra đánh giá có giá trị ứng dụng thực tiễn cao.</p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Năm kinh nghiệm</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">3</span>
+          <span class="stat-label">Công ty đã làm</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">65%</span>
+          <span class="stat-label">Tối ưu thời gian</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">85%+</span>
+          <span class="stat-label">Độ chính xác AI</span>
+        </div>
+      </div>
+      <div class="hero-btns">
+        <a href="#cv" class="btn-primary"><i class="fas fa-file-arrow-down"></i> Tải Curriculum Vitae</a>
+        <a href="#contact" class="btn-outline"><i class="fas fa-envelope"></i> Liên hệ ngay</a>
+      </div>
+    </div>
+    <!-- Right card -->
+    <div class="fade-in-right">
+      <div class="hero-card">
+        <div class="avatar-ring">P</div>
+        <div class="info-card-name">Phạm Thanh Phúc</div>
+        <div class="info-card-title">Material Quality Control Engineer</div>
+        <div class="divider-gold"></div>
+        <ul class="info-list">
+          <li><i class="fas fa-calendar-alt"></i><span>09/06/1999</span></li>
+          <li><i class="fas fa-map-marker-alt"></i><span>Châu Đốc, An Giang</span></li>
+          <li><i class="fas fa-envelope"></i><span>phamthanhphuc998@gmail.com</span></li>
+          <li><i class="fas fa-phone"></i><span>0352 030 670</span></li>
+          <li><i class="fas fa-graduation-cap"></i><span>ĐH Cần Thơ – GPA 3.35/4 (Giỏi)</span></li>
+          <li><i class="fas fa-briefcase"></i><span>5 năm kinh nghiệm QC vật liệu</span></li>
+        </ul>
+        <div class="divider-gold"></div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+          <span style="background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:0.72rem;font-weight:600;padding:0.25rem 0.75rem;border-radius:50px;">Draft Survey</span>
+          <span style="background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:0.72rem;font-weight:600;padding:0.25rem 0.75rem;border-radius:50px;">Design Expert</span>
+          <span style="background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:0.72rem;font-weight:600;padding:0.25rem 0.75rem;border-radius:50px;">R&D</span>
+          <span style="background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:0.72rem;font-weight:600;padding:0.25rem 0.75rem;border-radius:50px;">KCS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">Về tôi</div>
+    <h2 class="section-title">Tư duy thực chiến trong kiểm soát chất lượng</h2>
+    <p class="section-sub">Không chỉ đánh giá đạt/không đạt — tôi hiểu cách vật liệu ảnh hưởng đến toàn bộ hệ thống sản xuất.</p>
+
+    <div class="about-grid">
+      <div class="about-text fade-in-left">
+        <p>Tôi làm việc trong môi trường sản xuất công nghiệp, nơi <strong>chất lượng vật liệu đầu vào ảnh hưởng trực tiếp đến chi phí, hiệu suất và độ ổn định</strong> của toàn bộ hệ thống.</p>
+        <p>Tôi tập trung vào việc hiểu cách vật liệu vận hành trong điều kiện thực tế sản xuất, thay vì chỉ đánh giá theo tiêu chuẩn kỹ thuật đơn thuần. Mục tiêu là đưa ra các đánh giá có <strong>giá trị ứng dụng cao</strong>, hỗ trợ tốt hơn cho quá trình vận hành và ra quyết định.</p>
+
+        <div class="approach-box">
+          <h4><i class="fas fa-compass" style="margin-right:0.5rem;color:var(--gold)"></i>Cách tôi tiếp cận vật liệu</h4>
+          <div class="approach-item">
+            <i class="fas fa-eye"></i>
+            <span><strong>Quan sát thực tế tại hiện trường</strong> — không bỏ qua bất kỳ dấu hiệu bất thường nào</span>
+          </div>
+          <div class="approach-item">
+            <i class="fas fa-microscope"></i>
+            <span><strong>Phân tích kỹ thuật</strong> kết hợp kinh nghiệm tích lũy từ thực tiễn</span>
+          </div>
+          <div class="approach-item">
+            <i class="fas fa-chart-line"></i>
+            <span><strong>Đối chiếu với kết quả sản xuất</strong> — đánh giá tác động thực sự</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="value-cards fade-in-right">
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-shield-halved"></i></div>
+          <div>
+            <h4>Đánh giá tác động thực tế</h4>
+            <p>Không chỉ pass/fail theo tiêu chuẩn — đánh giá mức độ ảnh hưởng cụ thể đến chi phí và chất lượng sản phẩm cuối.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-triangle-exclamation"></i></div>
+          <div>
+            <h4>Nhận diện sớm rủi ro</h4>
+            <p>Phát hiện sai lệch từ nguyên liệu đầu vào trước khi chúng ảnh hưởng đến dây chuyền sản xuất.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-database"></i></div>
+          <div>
+            <h4>Hỗ trợ quyết định bằng dữ liệu</h4>
+            <p>Cung cấp cơ sở dữ liệu và phân tích để ban lãnh đạo ra quyết định kỹ thuật chính xác và có căn cứ.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-rocket"></i></div>
+          <div>
+            <h4>Cải tiến quy trình liên tục</h4>
+            <p>Hướng đến tối ưu hóa — nhanh hơn, chính xác hơn và hiệu quả hơn trong từng bước vận hành.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERIENCE ══ -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Kinh nghiệm</div>
+    <h2 class="section-title">Hành trình 5 năm trong ngành vật liệu</h2>
+    <p class="section-sub">Từ R&D đến KCS độc lập — mỗi vị trí là một bước nâng cao năng lực chuyên môn.</p>
+
+    <div class="timeline">
+
+      <!-- Job 3 (current) -->
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"><i class="fas fa-star"></i></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Nhân viên KCS Độc lập (Phúc tra chất lượng)</div>
+              <div class="exp-company"><i class="fas fa-building" style="margin-right:0.4rem"></i>Công ty TNHH Thép Tây Đô</div>
+            </div>
+            <span class="exp-badge current"><i class="fas fa-circle" style="font-size:0.5rem;margin-right:0.3rem"></i>05/2025 – Hiện tại</span>
+          </div>
+          <div class="exp-divider"></div>
+          <ul class="exp-list">
+            <li>Đánh giá chất lượng nguyên liệu đầu vào với vai trò <strong>độc lập, đảm bảo tính khách quan</strong> tuyệt đối</li>
+            <li>Làm bộ phận trung gian giữa các phòng ban và nhà cung cấp, báo cáo trực tiếp lên <strong>Tổng Giám đốc</strong></li>
+            <li>Thực hiện <strong>đo mớn nước (Draft Survey)</strong> đối với hàng nhập khẩu, tính toán khối lượng thực tế</li>
+            <li>Đánh giá sai số và độ tin cậy dữ liệu — phân tích ảnh hưởng đến hiệu suất sản xuất và chất lượng sản phẩm</li>
+          </ul>
+          <div class="achievement-box">
+            <h5><i class="fas fa-trophy" style="margin-right:0.4rem"></i>Thành tựu nổi bật</h5>
+            <div class="ach-item"><i class="fas fa-star"></i><span>Thiết kế và xây dựng <strong>công cụ website hỗ trợ tính toán Draft Survey</strong> tự động hóa hoàn toàn</span></div>
+            <div class="ach-item"><i class="fas fa-clock"></i><span>Rút ngắn thời gian xử lý từ <strong>~60 phút xuống còn 20 phút</strong> (giảm 65%)</span></div>
+            <div class="ach-item"><i class="fas fa-chart-bar"></i><span>Tăng độ chính xác và <strong>chuẩn hóa quy trình báo cáo</strong> trong toàn bộ công ty</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job 2 -->
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"><i class="fas fa-circle"></i></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Nhân viên KCS</div>
+              <div class="exp-company"><i class="fas fa-building" style="margin-right:0.4rem"></i>Công ty TNHH MTV VLXD Xanh Hamaco</div>
+            </div>
+            <span class="exp-badge">07/2023 – 04/2025</span>
+          </div>
+          <div class="exp-divider"></div>
+          <ul class="exp-list">
+            <li>Kiểm soát chất lượng nguyên liệu đầu vào và toàn bộ quy trình sản xuất theo tiêu chuẩn kỹ thuật</li>
+            <li>Phân tích tạp chất, độ ẩm, trạng thái vật liệu — đánh giá dựa trên quan sát thực tế</li>
+            <li>Theo dõi và liên kết chất lượng nguyên liệu với chất lượng sản phẩm đầu ra</li>
+          </ul>
+          <div class="achievement-box">
+            <h5><i class="fas fa-trophy" style="margin-right:0.4rem"></i>Thành tựu</h5>
+            <div class="ach-item"><i class="fas fa-star"></i><span>Ứng dụng <strong>Design Expert</strong> dự đoán cường độ vật liệu với độ chính xác <strong>&gt;85%</strong></span></div>
+            <div class="ach-item"><i class="fas fa-clock"></i><span>Rút ngắn đáng kể thời gian đánh giá chất lượng so với phương pháp truyền thống</span></div>
+            <div class="ach-item"><i class="fas fa-shield-check"></i><span>Nâng cao khả năng phát hiện sớm rủi ro từ nguyên liệu đầu vào</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job 1 -->
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"><i class="fas fa-circle"></i></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Nhân viên R&D</div>
+              <div class="exp-company"><i class="fas fa-building" style="margin-right:0.4rem"></i>Công ty TNHH MTV Bê tông Hamaco</div>
+            </div>
+            <span class="exp-badge">03/2022 – 06/2023</span>
+          </div>
+          <div class="exp-divider"></div>
+          <ul class="exp-list">
+            <li>Thực hiện thí nghiệm và đánh giá vật liệu xây dựng (cốt liệu, xi măng, phụ gia)</li>
+            <li>Xây dựng và chuẩn hóa quy trình thí nghiệm trong phòng lab từ đầu</li>
+            <li>Phối hợp với nhà cung cấp đánh giá chất lượng phụ gia và đề xuất phương án cải tiến</li>
+            <li>Phân tích kết quả thí nghiệm và lập báo cáo kỹ thuật định kỳ</li>
+          </ul>
+          <div class="achievement-box">
+            <h5><i class="fas fa-trophy" style="margin-right:0.4rem"></i>Thành tựu</h5>
+            <div class="ach-item"><i class="fas fa-star"></i><span>Cải tiến quy trình sấy cọc ly tâm giúp <strong>giảm chi phí sản xuất</strong> đáng kể</span></div>
+            <div class="ach-item"><i class="fas fa-cubes"></i><span>Tối ưu cấp phối vật liệu, nâng cao hiệu quả sử dụng nguyên liệu</span></div>
+            <div class="ach-item"><i class="fas fa-chart-line"></i><span>Nâng cao độ ổn định chất lượng sản phẩm thông qua kiểm soát dữ liệu</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SKILLS ══ -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Kỹ năng</div>
+    <h2 class="section-title">Năng lực chuyên môn</h2>
+    <p class="section-sub">Bộ kỹ năng kết hợp giữa kiến thức kỹ thuật chuyên sâu và ứng dụng thực tiễn sản xuất.</p>
+
+    <div class="skills-grid">
+      <div class="skill-card fade-in">
+        <div class="skill-icon"><i class="fas fa-flask"></i></div>
+        <h4>Kiểm soát chất lượng vật liệu</h4>
+        <p>Kiểm soát toàn diện nguyên liệu đầu vào, đánh giá theo tiêu chuẩn kỹ thuật kết hợp quan sát thực tế.</p>
+        <div style="margin-top:0.75rem">
+          <span class="skill-tag">QC Inbound</span>
+          <span class="skill-tag">KCS</span>
+          <span class="skill-tag">Sampling</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+        <h4>Phân tích tạp chất & Trạng thái vật liệu</h4>
+        <p>Nhận diện và phân tích tạp chất, độ ẩm, trạng thái vật liệu — đánh giá tác động đến sản xuất.</p>
+        <div style="margin-top:0.75rem">
+          <span class="skill-tag">Impurity Analysis</span>
+          <span class="skill-tag">Moisture</span>
+          <span class="skill-tag">Visual Inspection</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon"><i class="fas fa-industry"></i></div>
+        <h4>Quy trình sản xuất & Luyện thép</h4>
+        <p>Hiểu sâu quy trình sản xuất vật liệu xây dựng, bê tông và luyện thép trong môi trường công nghiệp.</p>
+        <div style="margin-top:0.75rem">
+          <span class="skill-tag">Steel Production</span>
+          <span class="skill-tag">Concrete</span>
+          <span class="skill-tag">R&D</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon"><i class="fas fa-ship"></i></div>
+        <h4>Draft Survey</h4>
+        <p>Đo mớn nước, tính toán khối lượng hàng hóa nhập khẩu, đánh giá sai số và độ tin cậy dữ liệu.</p>
+        <div style="margin-top:0.75rem">
+          <span class="skill-tag">Draft Survey</span>
+          <span class="skill-tag">Weight Calculation</span>
+          <span class="skill-tag">Import QC</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon"><i class="fas fa-chart-column"></i></div>
+        <h4>Phân tích dữ liệu & Báo cáo</h4>
+        <p>Xử lý, phân tích và trình bày dữ liệu chất lượng — hỗ trợ ra quyết định dựa trên bằng chứng.</p>
+        <div style="margin-top:0.75rem">
+          <span class="skill-tag">Data Analysis</span>
+          <span class="skill-tag">Reporting</span>
+          <span class="skill-tag">Excel</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon"><i class="fas fa-atom"></i></div>
+        <h4>Design Expert & Tối ưu hóa</h4>
+        <p>Ứng dụng Design Expert để dự đoán cường độ vật liệu và tối ưu cấp phối với độ chính xác >85%.</p>
+        <div style="margin-top:0.75rem">
+          <span class="skill-tag">Design Expert</span>
+          <span class="skill-tag">DOE</span>
+          <span class="skill-tag">Mix Design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJECT ══ -->
+<section id="project">
+  <div class="container">
+    <div class="section-label">Dự án nổi bật</div>
+    <h2 class="section-title">Công cụ tính toán Draft Survey</h2>
+    <p class="section-sub">Từ bài toán thực tế đến giải pháp công nghệ — tự thiết kế và xây dựng hoàn toàn.</p>
+
+    <div class="project-card fade-in">
+      <div class="project-visual">
+        <div class="project-icon-big"><i class="fas fa-ship"></i></div>
+        <h3>Draft Survey<br>Calculation Tool</h3>
+        <p>Nhận thấy quy trình tính toán thủ công mất nhiều thời gian và dễ sai sót, tôi đã tự thiết kế một công cụ website hỗ trợ nhập liệu và xử lý tự động toàn bộ quy trình Draft Survey.</p>
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+          <span class="result-pill"><i class="fas fa-bolt"></i> Giảm 65% thời gian</span>
+          <span class="result-pill"><i class="fas fa-bullseye"></i> Tăng độ chính xác</span>
+        </div>
+      </div>
+      <div class="project-details">
+        <h4>Kết quả đạt được</h4>
+        <div class="metric-row">
+          <div class="metric-box">
+            <span class="num">65%</span>
+            <div class="lbl">Giảm thời gian xử lý</div>
+          </div>
+          <div class="metric-box">
+            <span class="num">60→20</span>
+            <div class="lbl">Phút per báo cáo</div>
+          </div>
+          <div class="metric-box">
+            <span class="num">100%</span>
+            <div class="lbl">Tự động hóa tính toán</div>
+          </div>
+        </div>
+        <h4>Chi tiết thực hiện</h4>
+        <div class="detail-item"><i class="fas fa-lightbulb"></i><span>Nhận diện hạn chế của phương pháp tính toán thủ công (mất thời gian, dễ sai sót, thiếu nhất quán)</span></div>
+        <div class="detail-item"><i class="fas fa-code"></i><span>Tự thiết kế và xây dựng giao diện nhập liệu thân thiện, xử lý tự động theo công thức chuẩn</span></div>
+        <div class="detail-item"><i class="fas fa-check-circle"></i><span>Chuẩn hóa quy trình báo cáo — đảm bảo tính nhất quán và dễ kiểm tra chéo</span></div>
+        <div class="detail-item"><i class="fas fa-users"></i><span>Triển khai thực tế tại Thép Tây Đô — sử dụng trong các lô hàng nhập khẩu thực tế</span></div>
+        <div class="detail-item"><i class="fas fa-chart-pie"></i><span>Giảm sai sót do nhập liệu thủ công, tăng độ tin cậy của báo cáo gửi Tổng Giám đốc</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ THINKING ══ -->
+<section id="thinking">
+  <div class="container">
+    <div class="thinking-inner">
+      <div class="section-label">Tư duy làm việc</div>
+      <h2 class="section-title">Nhìn vật liệu như một phần của hệ thống</h2>
+
+      <div class="thinking-quote fade-in">
+        <p>Tôi tập trung vào việc hiểu mối liên hệ giữa vật liệu và toàn bộ hệ thống sản xuất, thay vì chỉ đánh giá đạt/không đạt theo tiêu chuẩn. Mỗi đánh giá đều hướng đến câu hỏi cốt lõi:</p>
+      </div>
+
+      <div class="arrow-point fade-in">
+        <i class="fas fa-arrow-right"></i>
+        <span><strong style="color:#fff">Vật liệu này ảnh hưởng như thế nào đến chi phí, chất lượng và hiệu suất vận hành của toàn bộ hệ thống sản xuất?</strong> Cách tiếp cận này giúp các quyết định trở nên có cơ sở hơn — không chỉ đúng về kỹ thuật mà còn phù hợp với thực tế sản xuất.</span>
+      </div>
+
+      <div class="thinking-grid">
+        <div class="thinking-pill fade-in">
+          <i class="fas fa-eye"></i>
+          <h4>Quan sát thực địa</h4>
+          <p>Không bỏ qua bất kỳ dấu hiệu bất thường nào tại hiện trường</p>
+        </div>
+        <div class="thinking-pill fade-in">
+          <i class="fas fa-brain"></i>
+          <h4>Phân tích hệ thống</h4>
+          <p>Hiểu mối liên hệ giữa từng yếu tố và toàn bộ quy trình</p>
+        </div>
+        <div class="thinking-pill fade-in">
+          <i class="fas fa-database"></i>
+          <h4>Quyết định dựa trên dữ liệu</h4>
+          <p>Mọi kết luận đều có căn cứ từ dữ liệu thực tế đo được</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EDUCATION ══ -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">Học vấn & Định hướng</div>
+    <h2 class="section-title">Nền tảng kỹ thuật & Phát triển nghề nghiệp</h2>
+
+    <div class="edu-card fade-in">
+      <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+      <div class="edu-info">
+        <h3>Đại học Cần Thơ</h3>
+        <div class="major">Chuyên ngành: Kỹ thuật Vật liệu</div>
+        <div class="period"><i class="fas fa-calendar" style="margin-right:0.4rem"></i>2017 – 2021</div>
+        <div class="gpa-badge"><i class="fas fa-medal"></i> GPA: 3.35 / 4.0 &nbsp;|&nbsp; Xếp loại: Giỏi</div>
+      </div>
+    </div>
+
+    <div class="dev-section fade-in">
+      <h4><i class="fas fa-compass" style="margin-right:0.5rem;color:var(--gold)"></i>Định hướng phát triển</h4>
+      <ul class="dev-list">
+        <li><i class="fas fa-circle-dot"></i><span>Không giới hạn bản thân trong một vị trí cụ thể — phát triển năng lực giải quyết vấn đề trong các môi trường kỹ thuật và sản xuất</span></li>
+        <li><i class="fas fa-circle-dot"></i><span>Hướng đến việc hiểu rõ vấn đề, phân tích dựa trên dữ liệu và thực tế, từ đó đưa ra giải pháp phù hợp và hiệu quả</span></li>
+        <li><i class="fas fa-circle-dot"></i><span>Tiếp tục nâng cao kỹ năng phân tích dữ liệu và ứng dụng công nghệ vào kiểm soát chất lượng</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CV SECTION ══ -->
+<section id="cv">
+  <div class="container">
+    <div class="section-label">Curriculum Vitae</div>
+    <h2 class="section-title">Tải & Xem CV chuyên nghiệp</h2>
+    <p class="section-sub">CV được thiết kế theo chuẩn quốc tế, tối ưu cho nhà tuyển dụng kỹ thuật và sản xuất.</p>
+
+    <div class="cv-wrapper fade-in">
+      <!-- Header bar -->
+      <div class="cv-header-bar">
+        <div>
+          <h3><i class="fas fa-file-pdf" style="margin-right:0.6rem;color:var(--gold)"></i>Curriculum Vitae — Phạm Thanh Phúc</h3>
+          <p>Material Quality Control Engineer &nbsp;|&nbsp; 5 năm kinh nghiệm &nbsp;|&nbsp; Cập nhật: 2025</p>
+        </div>
+        <button class="cv-dl-btn" onclick="printCV()">
+          <i class="fas fa-file-arrow-down"></i> Tải CV (PDF)
+        </button>
+      </div>
+
+      <!-- Preview area -->
+      <div class="cv-preview-area">
+        <div class="cv-preview-label">
+          <i class="fas fa-eye" style="color:var(--accent)"></i> Xem trước CV
+        </div>
+
+        <!-- ─── CV DOCUMENT ─── -->
+        <div class="cv-doc" id="cvDocument">
+
+          <!-- CV Header -->
+          <div class="cv-doc-header">
+            <div>
+              <div class="cv-doc-name">Phạm Thanh Phúc</div>
+              <div class="cv-doc-position">Kỹ sư Kỹ thuật Vật liệu &nbsp;|&nbsp; Material Quality Control Engineer</div>
+            </div>
+            <div class="cv-doc-contacts">
+              <div class="cv-contact-item"><i class="fas fa-envelope"></i> phamthanhphuc998@gmail.com</div>
+              <div class="cv-contact-item"><i class="fas fa-phone"></i> 0352 030 670</div>
+              <div class="cv-contact-item"><i class="fas fa-map-marker-alt"></i> Châu Đốc, An Giang</div>
+              <div class="cv-contact-item"><i class="fas fa-calendar-alt"></i> 09/06/1999</div>
+            </div>
+          </div>
+          <div class="cv-stripe"></div>
+
+          <!-- CV Body -->
+          <div class="cv-body">
+            <!-- SIDEBAR -->
+            <div class="cv-sidebar">
+
+              <!-- Education -->
+              <div class="cv-sidebar-section">
+                <div class="cv-section-title">Học vấn</div>
+                <div class="cv-info-item">
+                  <div class="cv-info-label">Trường</div>
+                  <div class="cv-info-val" style="font-weight:700">Đại học Cần Thơ</div>
+                </div>
+                <div class="cv-info-item">
+                  <div class="cv-info-label">Chuyên ngành</div>
+                  <div class="cv-info-val">Kỹ thuật Vật liệu</div>
+                </div>
+                <div class="cv-info-item">
+                  <div class="cv-info-label">Thời gian</div>
+                  <div class="cv-info-val">2017 – 2021</div>
+                </div>
+                <div class="cv-info-item">
+                  <div class="cv-info-label">Kết quả</div>
+                  <div class="cv-info-val" style="color:#92710e;font-weight:700">GPA 3.35/4 — Giỏi</div>
+                </div>
+              </div>
+
+              <!-- Core Skills -->
+              <div class="cv-sidebar-section">
+                <div class="cv-section-title">Kỹ năng chuyên môn</div>
+                <div class="cv-info-val" style="margin-bottom:0.4rem">
+                  <span class="cv-skill-tag">Kiểm soát chất lượng</span>
+                  <span class="cv-skill-tag">QC Vật liệu</span>
+                  <span class="cv-skill-tag">Draft Survey</span>
+                  <span class="cv-skill-tag">Design Expert</span>
+                  <span class="cv-skill-tag">R&D Lab</span>
+                  <span class="cv-skill-tag">Phân tích dữ liệu</span>
+                  <span class="cv-skill-tag">Lập báo cáo</span>
+                  <span class="cv-skill-tag">Luyện thép</span>
+                  <span class="cv-skill-tag">Bê tông</span>
+                  <span class="cv-skill-tag">Tối ưu quy trình</span>
+                </div>
+              </div>
+
+              <!-- Soft Skills -->
+              <div class="cv-sidebar-section">
+                <div class="cv-section-title">Kỹ năng mềm</div>
+                <div class="cv-info-val">
+                  <span class="cv-skill-tag">Tư duy phân tích</span>
+                  <span class="cv-skill-tag">Làm việc độc lập</span>
+                  <span class="cv-skill-tag">Báo cáo lãnh đạo</span>
+                  <span class="cv-skill-tag">Phối hợp nhà cung cấp</span>
+                  <span class="cv-skill-tag">Cải tiến liên tục</span>
+                </div>
+              </div>
+
+              <!-- Personal -->
+              <div class="cv-sidebar-section">
+                <div class="cv-section-title">Thông tin thêm</div>
+                <div class="cv-info-item">
+                  <div class="cv-info-label">Kinh nghiệm</div>
+                  <div class="cv-info-val" style="font-weight:700;color:var(--accent)">5 năm</div>
+                </div>
+                <div class="cv-info-item">
+                  <div class="cv-info-label">Quê quán</div>
+                  <div class="cv-info-val">Châu Đốc, An Giang</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- MAIN -->
+            <div class="cv-main">
+
+              <!-- Summary -->
+              <div class="cv-main-section">
+                <div class="cv-section-title">Tóm tắt chuyên môn</div>
+                <div class="cv-summary">
+                  Kỹ sư Kỹ thuật Vật liệu với <strong>5 năm kinh nghiệm thực tiễn</strong> trong kiểm soát chất lượng nguyên liệu đầu vào tại các môi trường sản xuất công nghiệp (bê tông, vật liệu xây dựng, luyện thép). Chuyên xây dựng phương pháp đánh giá vật liệu kết hợp quan sát thực địa và phân tích dữ liệu kỹ thuật. Có kinh nghiệm thực hiện Draft Survey, ứng dụng Design Expert dự đoán cường độ vật liệu (độ chính xác >85%) và phát triển công cụ số hóa quy trình kiểm soát chất lượng.
+                </div>
+              </div>
+
+              <!-- Experience -->
+              <div class="cv-main-section">
+                <div class="cv-section-title">Kinh nghiệm làm việc</div>
+
+                <div class="cv-exp-item">
+                  <div class="cv-exp-top">
+                    <div class="cv-exp-role">Nhân viên KCS Độc lập (Phúc tra chất lượng)</div>
+                    <div class="cv-exp-date">05/2025 – Hiện tại</div>
+                  </div>
+                  <div class="cv-exp-company">Công ty TNHH Thép Tây Đô</div>
+                  <ul class="cv-exp-bullets">
+                    <li>Đánh giá chất lượng nguyên liệu đầu vào độc lập, báo cáo trực tiếp lên Tổng Giám đốc</li>
+                    <li>Thực hiện đo mớn nước (Draft Survey) cho hàng nhập khẩu, tính toán và xác nhận khối lượng thực tế</li>
+                    <li>Phân tích ảnh hưởng của nguyên liệu đến hiệu suất sản xuất và chất lượng sản phẩm</li>
+                  </ul>
+                  <div class="cv-ach-highlight">
+                    <p><i class="fas fa-star"></i> <strong>Thành tựu:</strong> Xây dựng công cụ website tính toán Draft Survey tự động — giảm 65% thời gian xử lý (60 phút → 20 phút), tăng độ chính xác và chuẩn hóa báo cáo.</p>
+                  </div>
+                </div>
+
+                <div class="cv-separator"></div>
+
+                <div class="cv-exp-item">
+                  <div class="cv-exp-top">
+                    <div class="cv-exp-role">Nhân viên KCS</div>
+                    <div class="cv-exp-date">07/2023 – 04/2025</div>
+                  </div>
+                  <div class="cv-exp-company">Công ty TNHH MTV VLXD Xanh Hamaco</div>
+                  <ul class="cv-exp-bullets">
+                    <li>Kiểm soát chất lượng nguyên liệu đầu vào và quy trình sản xuất theo tiêu chuẩn kỹ thuật</li>
+                    <li>Phân tích tạp chất, độ ẩm, trạng thái vật liệu; liên kết chất lượng nguyên liệu với sản phẩm đầu ra</li>
+                  </ul>
+                  <div class="cv-ach-highlight">
+                    <p><i class="fas fa-star"></i> <strong>Thành tựu:</strong> Ứng dụng Design Expert dự đoán cường độ vật liệu (>85% độ chính xác); rút ngắn thời gian đánh giá; nâng cao phát hiện sớm rủi ro từ nguyên liệu.</p>
+                  </div>
+                </div>
+
+                <div class="cv-separator"></div>
+
+                <div class="cv-exp-item">
+                  <div class="cv-exp-top">
+                    <div class="cv-exp-role">Nhân viên R&D</div>
+                    <div class="cv-exp-date">03/2022 – 06/2023</div>
+                  </div>
+                  <div class="cv-exp-company">Công ty TNHH MTV Bê tông Hamaco</div>
+                  <ul class="cv-exp-bullets">
+                    <li>Thực hiện thí nghiệm và đánh giá vật liệu xây dựng; xây dựng và chuẩn hóa quy trình phòng lab</li>
+                    <li>Phối hợp với nhà cung cấp đánh giá phụ gia; phân tích và đề xuất phương án cải tiến cấp phối</li>
+                  </ul>
+                  <div class="cv-ach-highlight">
+                    <p><i class="fas fa-star"></i> <strong>Thành tựu:</strong> Cải tiến quy trình sấy cọc ly tâm giảm chi phí sản xuất; tối ưu cấp phối; nâng cao độ ổn định chất lượng thông qua kiểm soát dữ liệu.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Notable Project -->
+              <div class="cv-main-section">
+                <div class="cv-section-title">Dự án nổi bật</div>
+                <div class="cv-project-box">
+                  <h5><i class="fas fa-ship" style="margin-right:0.4rem;color:var(--gold)"></i>Công cụ tính toán Draft Survey (Website)</h5>
+                  <p>Tự thiết kế và phát triển công cụ web hỗ trợ tự động hóa toàn bộ quy trình tính toán Draft Survey. Giải quyết bài toán thực tế: tính toán thủ công mất nhiều thời gian và dễ sai sót.</p>
+                  <div class="cv-metrics">
+                    <div class="cv-metric">
+                      <div class="cv-m-num">−65%</div>
+                      <div class="cv-m-lbl">Thời gian xử lý</div>
+                    </div>
+                    <div class="cv-metric">
+                      <div class="cv-m-num">60→20</div>
+                      <div class="cv-m-lbl">Phút/báo cáo</div>
+                    </div>
+                    <div class="cv-metric">
+                      <div class="cv-m-num">100%</div>
+                      <div class="cv-m-lbl">Tự động hóa</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- end .cv-doc -->
+
+        <div style="text-align:center;margin-top:1.5rem">
+          <button class="cv-dl-btn" onclick="printCV()">
+            <i class="fas fa-print"></i> In / Lưu PDF
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Liên hệ</div>
+    <h2 class="section-title">Sẵn sàng hợp tác</h2>
+    <p class="section-sub">Có dự án hay cơ hội phù hợp? Tôi rất muốn được kết nối và trao đổi.</p>
+
+    <div class="contact-grid">
+      <div class="contact-info fade-in-left">
+        <h3>Thông tin liên hệ</h3>
+        <p>Luôn sẵn sàng nghe về các cơ hội mới, thảo luận kỹ thuật hoặc bất kỳ câu hỏi nào về lĩnh vực kiểm soát chất lượng vật liệu.</p>
+        <div class="contact-item-row">
+          <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val">phamthanhphuc998@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-item-row">
+          <div class="ci-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <div class="ci-label">Điện thoại</div>
+            <div class="ci-val">0352 030 670</div>
+          </div>
+        </div>
+        <div class="contact-item-row">
+          <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="ci-label">Địa điểm</div>
+            <div class="ci-val">Châu Đốc, An Giang</div>
+          </div>
+        </div>
+        <div class="contact-item-row">
+          <div class="ci-icon"><i class="fas fa-briefcase"></i></div>
+          <div>
+            <div class="ci-label">Trạng thái</div>
+            <div class="ci-val" style="color:#16a34a;font-weight:700"><i class="fas fa-circle" style="font-size:0.5rem;margin-right:0.3rem"></i>Đang làm việc tại Thép Tây Đô</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-cta fade-in-right">
+        <h4>Kết nối ngay với tôi</h4>
+        <p>Dù bạn là nhà tuyển dụng, đối tác kỹ thuật hay muốn trao đổi về lĩnh vực kiểm soát chất lượng — tôi luôn sẵn sàng lắng nghe.</p>
+        <div class="cta-actions">
+          <a href="mailto:phamthanhphuc998@gmail.com" class="cta-btn primary-cta">
+            <i class="fas fa-envelope"></i> Gửi email ngay
+          </a>
+          <a href="tel:0352030670" class="cta-btn">
+            <i class="fas fa-phone"></i> Gọi điện: 0352 030 670
+          </a>
+          <button class="cta-btn" onclick="printCV()">
+            <i class="fas fa-file-arrow-down"></i> Tải CV (PDF)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p>&copy; 2025 <span>Phạm Thanh Phúc</span> — Material Quality Control Engineer &nbsp;|&nbsp; Designed with precision</p>
+</footer>
+
+<!-- Back to top -->
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  // ── Nav active link
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + cur) a.classList.add('active');
+    });
+    document.getElementById('topBtn').classList.toggle('show', window.scrollY > 400);
+  });
+
+  // ── Intersection Observer for animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => observer.observe(el));
+
+  // ── Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // ── Print CV (clean, no URL)
+  function printCV() {
+    const cvEl = document.getElementById('cvDocument');
+    const win = window.open('', '_blank', 'width=900,height=700');
+    win.document.write(`<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<title>CV – Phạm Thanh Phúc</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+  @page { margin: 0; size: A4; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #fff; color: #1e293b; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .cv-doc { max-width: 860px; margin: 0 auto; background: #fff; }
+  .cv-doc-header { background: linear-gradient(135deg,#0f2942,#1d3a5c); padding: 1.8rem 2.2rem; display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: center; }
+  .cv-doc-name { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: #fff; white-space: nowrap; }
+  .cv-doc-position { color: #c9a84c; font-size: 0.88rem; font-weight: 600; margin-top: 0.25rem; }
+  .cv-doc-contacts { display: flex; flex-direction: column; gap: 0.35rem; align-items: flex-end; }
+  .cv-contact-item { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.85); font-size: 0.76rem; }
+  .cv-contact-item i { color: #c9a84c; width: 13px; }
+  .cv-stripe { height: 4px; background: linear-gradient(90deg,#c9a84c,#e0bc6a,#c9a84c); }
+  .cv-body { display: grid; grid-template-columns: 190px 1fr; }
+  .cv-sidebar { background: #f4f7fb; padding: 1.5rem 1.3rem; border-right: 1px solid #e2e8f0; }
+  .cv-main { padding: 1.5rem 1.8rem; }
+  .cv-section-title { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #1d6fa4; border-bottom: 2px solid #c9a84c; padding-bottom: 0.25rem; margin-bottom: 0.8rem; }
+  .cv-sidebar-section { margin-bottom: 1.4rem; }
+  .cv-info-item { margin-bottom: 0.45rem; }
+  .cv-info-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1d6fa4; }
+  .cv-info-val { font-size: 0.76rem; color: #1e293b; margin-top: 0.05rem; line-height: 1.4; }
+  .cv-skill-tag { display: inline-block; background: rgba(15,41,66,0.08); color: #0f2942; font-size: 0.67rem; font-weight: 500; padding: 0.18rem 0.5rem; border-radius: 4px; margin: 0.12rem 0.08rem 0 0; border: 1px solid rgba(15,41,66,0.12); }
+  .cv-main-section { margin-bottom: 1.3rem; }
+  .cv-summary { font-size: 0.78rem; color: #64748b; line-height: 1.72; background: rgba(15,41,66,0.03); border-left: 3px solid #c9a84c; padding: 0.8rem 0.9rem; border-radius: 0 6px 6px 0; }
+  .cv-exp-item { margin-bottom: 1rem; }
+  .cv-exp-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.12rem; }
+  .cv-exp-role { font-size: 0.83rem; font-weight: 700; color: #0f2942; }
+  .cv-exp-date { font-size: 0.68rem; color: #64748b; font-weight: 500; white-space: nowrap; }
+  .cv-exp-company { font-size: 0.73rem; color: #1d6fa4; font-weight: 600; margin-bottom: 0.4rem; }
+  .cv-exp-bullets { list-style: none; padding: 0; }
+  .cv-exp-bullets li { font-size: 0.74rem; color: #64748b; padding-left: 1rem; position: relative; margin-bottom: 0.18rem; line-height: 1.52; }
+  .cv-exp-bullets li::before { content: '▸'; position: absolute; left: 0; color: #1d6fa4; }
+  .cv-ach-highlight { background: linear-gradient(135deg,rgba(201,168,76,0.07),rgba(29,111,164,0.07)); border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; padding: 0.45rem 0.7rem; margin-top: 0.35rem; }
+  .cv-ach-highlight p { font-size: 0.7rem; color: #64748b; line-height: 1.52; }
+  .cv-ach-highlight p i { color: #c9a84c; margin-right: 4px; }
+  .cv-project-box { background: rgba(15,41,66,0.03); border: 1px solid rgba(15,41,66,0.1); border-radius: 7px; padding: 0.85rem 0.95rem; }
+  .cv-project-box h5 { font-size: 0.78rem; font-weight: 700; color: #0f2942; margin-bottom: 0.25rem; }
+  .cv-project-box p { font-size: 0.73rem; color: #64748b; line-height: 1.6; }
+  .cv-metrics { display: flex; gap: 0.65rem; margin-top: 0.45rem; }
+  .cv-metric { flex: 1; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.45rem; text-align: center; }
+  .cv-metric .cv-m-num { font-size: 0.95rem; font-weight: 800; color: #c9a84c; font-family: 'Playfair Display', serif; }
+  .cv-metric .cv-m-lbl { font-size: 0.6rem; color: #64748b; margin-top: 0.08rem; }
+  .cv-separator { height: 1px; background: #e2e8f0; margin: 0.85rem 0; }
+</style>
+</head>
+<body>
+<div class="cv-doc">
+  <div class="cv-doc-header">
+    <div>
+      <div class="cv-doc-name">Phạm Thanh Phúc</div>
+      <div class="cv-doc-position">Kỹ sư Kỹ thuật Vật liệu &nbsp;|&nbsp; Material Quality Control Engineer</div>
+    </div>
+    <div class="cv-doc-contacts">
+      <div class="cv-contact-item"><i class="fas fa-envelope"></i> phamthanhphuc998@gmail.com</div>
+      <div class="cv-contact-item"><i class="fas fa-phone"></i> 0352 030 670</div>
+      <div class="cv-contact-item"><i class="fas fa-map-marker-alt"></i> Châu Đốc, An Giang</div>
+      <div class="cv-contact-item"><i class="fas fa-calendar-alt"></i> 09/06/1999</div>
+    </div>
+  </div>
+  <div class="cv-stripe"></div>
+  <div class="cv-body">
+    <div class="cv-sidebar">
+      <div class="cv-sidebar-section">
+        <div class="cv-section-title">Học vấn</div>
+        <div class="cv-info-item"><div class="cv-info-label">Trường</div><div class="cv-info-val" style="font-weight:700">Đại học Cần Thơ</div></div>
+        <div class="cv-info-item"><div class="cv-info-label">Chuyên ngành</div><div class="cv-info-val">Kỹ thuật Vật liệu</div></div>
+        <div class="cv-info-item"><div class="cv-info-label">Thời gian</div><div class="cv-info-val">2017 – 2021</div></div>
+        <div class="cv-info-item"><div class="cv-info-label">Kết quả</div><div class="cv-info-val" style="color:#92710e;font-weight:700">GPA 3.35/4 — Giỏi</div></div>
+      </div>
+      <div class="cv-sidebar-section">
+        <div class="cv-section-title">Kỹ năng chuyên môn</div>
+        <div class="cv-info-val">
+          <span class="cv-skill-tag">Kiểm soát chất lượng</span>
+          <span class="cv-skill-tag">QC Vật liệu</span>
+          <span class="cv-skill-tag">Draft Survey</span>
+          <span class="cv-skill-tag">Design Expert</span>
+          <span class="cv-skill-tag">R&D Lab</span>
+          <span class="cv-skill-tag">Phân tích dữ liệu</span>
+          <span class="cv-skill-tag">Lập báo cáo</span>
+          <span class="cv-skill-tag">Luyện thép</span>
+          <span class="cv-skill-tag">Bê tông</span>
+          <span class="cv-skill-tag">Tối ưu quy trình</span>
+        </div>
+      </div>
+      <div class="cv-sidebar-section">
+        <div class="cv-section-title">Kỹ năng mềm</div>
+        <div class="cv-info-val">
+          <span class="cv-skill-tag">Tư duy phân tích</span>
+          <span class="cv-skill-tag">Làm việc độc lập</span>
+          <span class="cv-skill-tag">Báo cáo lãnh đạo</span>
+          <span class="cv-skill-tag">Phối hợp NCC</span>
+          <span class="cv-skill-tag">Cải tiến liên tục</span>
+        </div>
+      </div>
+      <div class="cv-sidebar-section">
+        <div class="cv-section-title">Thông tin thêm</div>
+        <div class="cv-info-item"><div class="cv-info-label">Kinh nghiệm</div><div class="cv-info-val" style="font-weight:700;color:#1d6fa4">5 năm</div></div>
+        <div class="cv-info-item"><div class="cv-info-label">Quê quán</div><div class="cv-info-val">Châu Đốc, An Giang</div></div>
+      </div>
+    </div>
+    <div class="cv-main">
+      <div class="cv-main-section">
+        <div class="cv-section-title">Tóm tắt chuyên môn</div>
+        <div class="cv-summary">Kỹ sư Kỹ thuật Vật liệu với <strong>5 năm kinh nghiệm thực tiễn</strong> trong kiểm soát chất lượng nguyên liệu đầu vào tại các môi trường sản xuất công nghiệp (bê tông, vật liệu xây dựng, luyện thép). Chuyên xây dựng phương pháp đánh giá vật liệu kết hợp quan sát thực địa và phân tích dữ liệu kỹ thuật. Có kinh nghiệm thực hiện Draft Survey, ứng dụng Design Expert dự đoán cường độ vật liệu (&gt;85% độ chính xác) và phát triển công cụ số hóa quy trình kiểm soát chất lượng.</div>
+      </div>
+      <div class="cv-main-section">
+        <div class="cv-section-title">Kinh nghiệm làm việc</div>
+        <div class="cv-exp-item">
+          <div class="cv-exp-top"><div class="cv-exp-role">Nhân viên KCS Độc lập (Phúc tra chất lượng)</div><div class="cv-exp-date">05/2025 – Hiện tại</div></div>
+          <div class="cv-exp-company">Công ty TNHH Thép Tây Đô</div>
+          <ul class="cv-exp-bullets">
+            <li>Đánh giá chất lượng nguyên liệu đầu vào độc lập, báo cáo trực tiếp lên Tổng Giám đốc</li>
+            <li>Thực hiện đo mớn nước (Draft Survey) cho hàng nhập khẩu, tính toán và xác nhận khối lượng thực tế</li>
+            <li>Phân tích ảnh hưởng của nguyên liệu đến hiệu suất sản xuất và chất lượng sản phẩm</li>
+          </ul>
+          <div class="cv-ach-highlight"><p><i class="fas fa-star"></i> <strong>Thành tựu:</strong> Xây dựng công cụ website tính toán Draft Survey tự động — giảm 65% thời gian xử lý (60 phút → 20 phút), tăng độ chính xác và chuẩn hóa báo cáo.</p></div>
+        </div>
+        <div class="cv-separator"></div>
+        <div class="cv-exp-item">
+          <div class="cv-exp-top"><div class="cv-exp-role">Nhân viên KCS</div><div class="cv-exp-date">07/2023 – 04/2025</div></div>
+          <div class="cv-exp-company">Công ty TNHH MTV VLXD Xanh Hamaco</div>
+          <ul class="cv-exp-bullets">
+            <li>Kiểm soát chất lượng nguyên liệu đầu vào và quy trình sản xuất theo tiêu chuẩn kỹ thuật</li>
+            <li>Phân tích tạp chất, độ ẩm, trạng thái vật liệu; liên kết chất lượng nguyên liệu với sản phẩm đầu ra</li>
+          </ul>
+          <div class="cv-ach-highlight"><p><i class="fas fa-star"></i> <strong>Thành tựu:</strong> Ứng dụng Design Expert dự đoán cường độ vật liệu (&gt;85% độ chính xác); rút ngắn thời gian đánh giá; nâng cao phát hiện sớm rủi ro từ nguyên liệu.</p></div>
+        </div>
+        <div class="cv-separator"></div>
+        <div class="cv-exp-item">
+          <div class="cv-exp-top"><div class="cv-exp-role">Nhân viên R&D</div><div class="cv-exp-date">03/2022 – 06/2023</div></div>
+          <div class="cv-exp-company">Công ty TNHH MTV Bê tông Hamaco</div>
+          <ul class="cv-exp-bullets">
+            <li>Thực hiện thí nghiệm và đánh giá vật liệu xây dựng; xây dựng và chuẩn hóa quy trình phòng lab</li>
+            <li>Phối hợp với nhà cung cấp đánh giá phụ gia; phân tích và đề xuất phương án cải tiến cấp phối</li>
+          </ul>
+          <div class="cv-ach-highlight"><p><i class="fas fa-star"></i> <strong>Thành tựu:</strong> Cải tiến quy trình sấy cọc ly tâm giảm chi phí sản xuất; tối ưu cấp phối vật liệu; nâng cao độ ổn định chất lượng thông qua kiểm soát dữ liệu.</p></div>
+        </div>
+      </div>
+      <div class="cv-main-section">
+        <div class="cv-section-title">Dự án nổi bật</div>
+        <div class="cv-project-box">
+          <h5><i class="fas fa-ship" style="margin-right:0.4rem;color:#c9a84c"></i>Công cụ tính toán Draft Survey (Website)</h5>
+          <p>Tự thiết kế và phát triển công cụ web hỗ trợ tự động hóa toàn bộ quy trình tính toán Draft Survey. Giải quyết bài toán thực tế: tính toán thủ công mất nhiều thời gian và dễ sai sót.</p>
+          <div class="cv-metrics">
+            <div class="cv-metric"><div class="cv-m-num">−65%</div><div class="cv-m-lbl">Thời gian xử lý</div></div>
+            <div class="cv-metric"><div class="cv-m-num">60→20</div><div class="cv-m-lbl">Phút/báo cáo</div></div>
+            <div class="cv-metric"><div class="cv-m-num">100%</div><div class="cv-m-lbl">Tự động hóa</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>window.onload=function(){window.print();}<\/script>
+</body>
+</html>`);
+    win.document.close();
+  }
+</script>
+</body>
+</html>
